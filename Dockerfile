@@ -23,6 +23,9 @@ RUN apt-get update && \
         man-db \
         locales \
         vim \
+        libssl-dev \
+        pkg-config \
+        cmake \
     && \
     pip3 install xonsh-apt-tabcomplete xonsh-docker-tabcomplete && \
     apt-get clean
