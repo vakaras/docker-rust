@@ -3,7 +3,9 @@ IMAGE_VERSION=0.0.1
 IMAGE_NAME="vakaras/rust:${IMAGE_VERSION}"
 
 run_container: workspace
-	sudo docker run --rm -ti "${IMAGE_NAME}" /usr/bin/fish
+	sudo docker run --rm -ti \
+		-v "$(shell pwd)/workspace:/data" \
+		"${IMAGE_NAME}" /usr/bin/fish
 
 workspace/.config/fish/config.fish: | workspace
 	mkdir -p workspace/.config/fish
