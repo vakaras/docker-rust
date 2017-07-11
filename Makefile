@@ -10,9 +10,10 @@ run_container: workspace
 run_jupyter: workspace nbworkspace
 	sudo docker run --rm -ti \
 		-v "$(shell pwd)/workspace:/data" \
-        -v "$(shell pwd)/nbworkspace:/home/jovyan/work" \
-        -e GEN_CERT=yes \
-        -e NB_UID=1007 \
+		-v "$(shell pwd)/nbworkspace:/home/jovyan/work" \
+		--user root \
+		-e GEN_CERT=yes \
+		-e NB_UID=1007 \
 		-p 23123:8888 jupyter/datascience-notebook
 
 workspace/.config/fish/config.fish: | workspace
